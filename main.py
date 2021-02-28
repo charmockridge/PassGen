@@ -38,10 +38,7 @@ def Generate(passLen):
         indexChar = randint(0, len(characters) - 1)
         generation.append(characters[indexChar])
 
-    check = Secure(generation)
-
-    # Error here
-    if check is False:
+    if Secure(generation) is False:
         return Generate(passLen)
 
     return ''.join(str(x) for x in generation)
@@ -50,9 +47,10 @@ def Generate(passLen):
 def Main():
     try:
         passLen = int(input("How many characters in your password: "))
+
         password = Generate(passLen)
 
-        print("\n==GENERATED PASSWORD==")
+        print(f"\n==GENERATED PASSWORD==")
         print(password)
         print("======================")
     except ValueError:
